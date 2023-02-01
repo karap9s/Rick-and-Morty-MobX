@@ -38,16 +38,6 @@ select {
   cursor: pointer;
 }
 
-.status {
-  display: flex;
-  align-items: center;
-}
-
-.gender {
-  display: flex;
-  align-items: center;
-}
-
 .search_wrapper {
   display: flex;
 }
