@@ -19,4 +19,14 @@ export default interface ICards {
   creater: string;
   isOpen?: boolean;
   modalHandler?: (value: boolean) => void;
-}
+};
+
+export type TGetPages = {
+  type: string;
+  name: string;
+  status: string;
+  gender: string;
+  page?: number;
+};
+
+export type TPagesCount = string | number;

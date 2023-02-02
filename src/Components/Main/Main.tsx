@@ -1,5 +1,5 @@
 import React from 'react';
-import Buttons from './Components/Buttons/Buttons';
+import Buttons from './Components/Buttons/Pagination';
 import Cards from './Components/Cards/Cards';
 import SearchBar from './Components/SearchBar/SearchBar';
 

@@ -1,0 +1,31 @@
+.card {
+  background-color: #EBEC67;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid #000000;
+}
+
+.more {
+  width: 200px;
+  height: 50px;
+  border: 2px solid #783FE8;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  background-color: #783FE8;
+  color: #A5F279;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.more:hover {
+  cursor: pointer;
+  background-color: purple;
+  transition: .7s;
+}
+
+.name {
+  text-align: center;
+  width: 300px;
+  word-wrap: break-word;
+}
