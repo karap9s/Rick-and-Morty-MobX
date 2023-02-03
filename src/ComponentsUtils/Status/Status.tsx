@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { mainStore } from '../../Store/MainStore';
 import { TCheckedStatus } from '../../Types/MainTypes';
 import './Status.css';
@@ -60,6 +60,10 @@ const Status: React.FC = () => {
         break;
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem('checkedStatus', JSON.stringify(checkedStatus));
+  });
 
   return (
     <div className="status">

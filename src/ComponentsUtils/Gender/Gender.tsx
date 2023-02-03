@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { mainStore } from '../../Store/MainStore';
 import { TCheckedGender } from '../../Types/MainTypes';
 import './Gender.css';
@@ -75,6 +75,10 @@ const Gender: React.FC = () => {
         break;
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem('checkedGender', JSON.stringify(checkedGender));
+  });
 
   return (
     <div>

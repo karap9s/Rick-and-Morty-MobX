@@ -60,10 +60,12 @@ class MainStore {
 
   setGender = (payload: string): void => {
     this.gender = payload;
+    localStorage.setItem('gender', payload);
   };
 
   setStatus = (payload: string): void => {
     this.status = payload;
+    localStorage.setItem('status', payload);
   };
 }
 
