@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import './Pagination.css';
 import { mainStore } from '../../../../Store/MainStore';
 import { TPagesCount } from '../../../../Types/MainTypes';
+import { observer } from 'mobx-react-lite';
 
-const Pagination: React.FC = () => {
+const Pagination: React.FC = observer(() => {
   const { pagesCount, page } = mainStore;
-  const { setPagesCount, decrementPage, incrementPage, customPage } = mainStore;
+  const { setPagesCount, decrementPage, incrementPage, customPage, setCards } =
+    mainStore;
   const [buttons, setButtons] = useState<TPagesCount[]>([] as TPagesCount[]);
 
   useEffect(() => {
     setPagesCount().then(() => {
+      setCards();
       const getPagination = () => {
         switch (pagesCount) {
           case 0:
@@ -27,9 +30,12 @@ const Pagination: React.FC = () => {
           default:
             break;
         }
-        if (page <= 3) return [1, 2, 3, 4, '...', pagesCount];
-        if (page <= pagesCount - 3)
+        if (page <= 3) {
+          return [1, 2, 3, 4, '...', pagesCount];
+        }
+        if (page <= pagesCount - 3) {
           return [1, '..', page - 1, page, page + 1, '....', pagesCount];
+        }
         return [
           1,
           '...',
@@ -65,6 +71,6 @@ const Pagination: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Pagination;

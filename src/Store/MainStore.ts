@@ -25,7 +25,7 @@ class MainStore {
     });
   };
 
-  setPagesCount = (): Promise<void> => {
+  setPagesCount = async (): Promise<void> => {
     return getPages({
       type: '',
       name: '',
