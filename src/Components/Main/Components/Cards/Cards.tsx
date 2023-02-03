@@ -6,12 +6,12 @@ import ICards from '../../../../Types/MainTypes';
 import Card from '../../../../ComponentsUtils/Card/Card';
 
 const Cards: React.FC = observer(() => {
-  const { cards, gender, status } = mainStore;
+  const { cards, gender, status, name, type } = mainStore;
   const { setCards } = mainStore;
 
   useEffect(() => {
     setCards();
-  }, [gender, status]);
+  }, [gender, status, name, type]);
 
   return (
     <div className="wrapper">

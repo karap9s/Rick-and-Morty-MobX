@@ -4,10 +4,12 @@ import ICards from '../Types/MainTypes';
 
 class MainStore {
   cards: ICards[] = [];
-  page: number = 1;
+  page: number = JSON.parse(localStorage.getItem('page') || JSON.stringify(1));
   pagesCount: number = 0;
   gender: string = localStorage.getItem('gender') || '';
   status: string = localStorage.getItem('status') || '';
+  type: string = 'name';
+  name: string = '';
 
   constructor() {
     makeAutoObservable(this);
@@ -15,8 +17,8 @@ class MainStore {
 
   setCards = (): void => {
     getFilterCharacters({
-      type: '',
-      name: '',
+      type: this.type,
+      name: this.name,
       status: this.status,
       gender: this.gender,
       page: this.page,
@@ -45,6 +47,7 @@ class MainStore {
       return;
     }
     this.page--;
+    localStorage.setItem('page', JSON.stringify(this.page));
   };
 
   incrementPage = (): void => {
@@ -52,10 +55,12 @@ class MainStore {
       return;
     }
     this.page++;
+    localStorage.setItem('page', JSON.stringify(this.page));
   };
 
   customPage = (payload: number): void => {
     this.page = payload;
+    localStorage.setItem('page', JSON.stringify(this.page));
   };
 
   setGender = (payload: string): void => {
@@ -66,6 +71,14 @@ class MainStore {
   setStatus = (payload: string): void => {
     this.status = payload;
     localStorage.setItem('status', payload);
+  };
+
+  setType = (payload: string): void => {
+    this.type = payload;
+  };
+
+  setName = (payload: string): void => {
+    this.name = payload;
   };
 }
 

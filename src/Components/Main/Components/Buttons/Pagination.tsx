@@ -5,7 +5,7 @@ import { TPagesCount } from '../../../../Types/MainTypes';
 import { observer } from 'mobx-react-lite';
 
 const Pagination: React.FC = observer(() => {
-  const { pagesCount, page, gender, status } = mainStore;
+  const { pagesCount, page, gender, status, name, type } = mainStore;
   const { setPagesCount, decrementPage, incrementPage, customPage, setCards } =
     mainStore;
   const [buttons, setButtons] = useState<TPagesCount[]>([] as TPagesCount[]);
@@ -47,7 +47,7 @@ const Pagination: React.FC = observer(() => {
       };
       setButtons(getPagination);
     });
-  }, [pagesCount, page, gender, status]);
+  }, [pagesCount, page, gender, status, name, type]);
 
   return (
     <div className="pagination-wrapper">
