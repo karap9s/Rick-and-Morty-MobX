@@ -29,4 +29,19 @@ export type TGetPages = {
   page?: number;
 };
 
+export type TCheckedGender = {
+  any: boolean;
+  male: boolean;
+  female: boolean;
+  genderless: boolean;
+  unknown: boolean;
+};
+
+export type TCheckedStatus = {
+  any: boolean;
+  alive: boolean;
+  dead: boolean;
+  unknown: boolean;
+};
+
 export type TPagesCount = string | number;

@@ -6,6 +6,8 @@ class MainStore {
   cards: ICards[] = [];
   page: number = 1;
   pagesCount: number = 0;
+  gender: string = localStorage.getItem('gender') || '';
+  status: string = localStorage.getItem('status') || '';
 
   constructor() {
     makeAutoObservable(this);
@@ -15,8 +17,8 @@ class MainStore {
     getFilterCharacters({
       type: '',
       name: '',
-      status: '',
-      gender: '',
+      status: this.status,
+      gender: this.gender,
       page: this.page,
     }).then((data) => {
       runInAction(() => {
@@ -29,8 +31,8 @@ class MainStore {
     return getPages({
       type: '',
       name: '',
-      status: '',
-      gender: '',
+      status: this.status,
+      gender: this.gender,
     }).then((data) => {
       runInAction(() => {
         this.pagesCount = data;
@@ -54,6 +56,14 @@ class MainStore {
 
   customPage = (payload: number): void => {
     this.page = payload;
+  };
+
+  setGender = (payload: string): void => {
+    this.gender = payload;
+  };
+
+  setStatus = (payload: string): void => {
+    this.status = payload;
   };
 }
 
