@@ -23,6 +23,10 @@ const SearchBar: React.FC = () => {
   };
 
   useEffect(() => {
+    localStorage.setItem('search', search);
+  });
+
+  useEffect(() => {
     setName(search);
   }, []);
 
