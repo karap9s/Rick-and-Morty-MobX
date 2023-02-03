@@ -1,6 +1,5 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
-import { getFilterCharacters } from '../../../../API/MainAPI';
 import './Cards.css';
 import { mainStore } from '../../../../Store/MainStore';
 import ICards from '../../../../Types/MainTypes';

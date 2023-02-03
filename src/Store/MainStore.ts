@@ -1,17 +1,17 @@
 import { makeAutoObservable, runInAction } from 'mobx';
-import { getFilterCharacters } from '../API/MainAPI';
-import ICards, { TPagesCount } from '../Types/MainTypes';
+import { getFilterCharacters, getPages } from '../API/MainAPI';
+import ICards from '../Types/MainTypes';
 
 class MainStore {
   cards: ICards[] = [];
   page: number = 1;
-  pagesCount: TPagesCount[] = [];
+  pagesCount: number = 15;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setCards = () => {
+  setCards = (): void => {
     getFilterCharacters({
       type: '',
       name: '',
@@ -19,11 +19,44 @@ class MainStore {
       gender: '',
       page: 1,
     }).then((data) => {
-      console.log(data);
       runInAction(() => {
         this.cards = data;
       });
     });
+  };
+
+  setPagesCount = (): void => {
+    getPages({
+      type: '',
+      name: '',
+      status: '',
+      gender: '',
+    }).then((data) => {
+      runInAction(() => {
+        this.pagesCount = data;
+      });
+    });
+  };
+
+  decrementPage = (): void => {
+    if (this.page === 1) {
+      return;
+    }
+    this.page--;
+    console.log(this.page);
+  };
+
+  incrementPage = (): void => {
+    if (this.page === this.pagesCount) {
+      return;
+    }
+    this.page++;
+    console.log(this.page);
+  };
+
+  customPage = (payload: number): void => {
+    this.page = payload;
+    console.log(this.page);
   };
 }
 
