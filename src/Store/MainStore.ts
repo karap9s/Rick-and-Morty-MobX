@@ -5,7 +5,7 @@ import ICards from '../Types/MainTypes';
 class MainStore {
   cards: ICards[] = [];
   page: number = 1;
-  pagesCount: number = 15;
+  pagesCount: number = 0;
 
   constructor() {
     makeAutoObservable(this);
@@ -17,7 +17,7 @@ class MainStore {
       name: '',
       status: '',
       gender: '',
-      page: 1,
+      page: this.page,
     }).then((data) => {
       runInAction(() => {
         this.cards = data;
@@ -25,8 +25,8 @@ class MainStore {
     });
   };
 
-  setPagesCount = (): void => {
-    getPages({
+  setPagesCount = (): Promise<void> => {
+    return getPages({
       type: '',
       name: '',
       status: '',
@@ -43,7 +43,6 @@ class MainStore {
       return;
     }
     this.page--;
-    console.log(this.page);
   };
 
   incrementPage = (): void => {
@@ -51,12 +50,10 @@ class MainStore {
       return;
     }
     this.page++;
-    console.log(this.page);
   };
 
   customPage = (payload: number): void => {
     this.page = payload;
-    console.log(this.page);
   };
 }
 
