@@ -4,9 +4,9 @@ import Main from './Components/Main/Main';
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import About from './Components/About/About';
-import Modal from './ComponentsUtils/Modal/Modal';
 import NotFound from './ComponentsUtils/NotFound/NotFound';
 import Form from './Components/Form/Form';
+import Information from './Components/Information/Information';
 
 const App: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
         <Route path="/form" element={<Form />} />
-        <Route path="/info" element={<Modal />} />
+        <Route path="/info" element={<Information />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace={true} />} />
       </Routes>

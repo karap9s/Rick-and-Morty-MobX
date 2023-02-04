@@ -6,13 +6,18 @@ import { observer } from 'mobx-react-lite';
 
 const Pagination: React.FC = observer(() => {
   const { pagesCount, page, gender, status, name, type } = mainStore;
-  const { setPagesCount, decrementPage, incrementPage, customPage, setCards } =
-    mainStore;
+  const {
+    setPagesCount,
+    decrementPage,
+    incrementPage,
+    customPage,
+    setCardsArray,
+  } = mainStore;
   const [buttons, setButtons] = useState<TPagesCount[]>([] as TPagesCount[]);
 
   useEffect(() => {
     setPagesCount().then(() => {
-      setCards();
+      setCardsArray();
       const getPagination = () => {
         switch (pagesCount) {
           case 0:

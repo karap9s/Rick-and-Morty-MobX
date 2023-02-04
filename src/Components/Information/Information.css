@@ -1,0 +1,115 @@
+.background_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../assets/img/rick-sanchez-easier-for-you-wallpaper.jpg");
+  background-size: contain;
+}
+
+.modal_wrapper {
+  width: 45%;
+  height: 40%;
+  margin-bottom: 100px;
+}
+
+.modal {
+  width: 100%;
+}
+
+.episodes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(70, 253, 33);
+}
+
+.episodes_heading {
+  font-size: 56px;
+}
+
+.episodes_th {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.episodes_body {
+  overflow-y: scroll;
+  height: 500px;
+}
+
+.episodes_series {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+}
+
+.episodes_elementHead, .episodes_element {
+  font-size: 40px;
+  text-align: center;
+  width: 500px;
+  word-break: break-all;
+}
+
+.episodes_element {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+
+.location {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: purple;
+}
+
+.location_heading {
+  font-size: 56px;
+  color: rgb(70, 253, 33);
+}
+
+.location_name {
+  font-size: 40px;
+  color: rgb(70, 253, 33);
+}
+
+.dimension {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: wheat;
+  background-color: rgb(4, 197, 211);
+}
+
+.dimension_heading {
+  font-size: 56px;
+}
+
+.dimension_name {
+  font-size: 40px;
+}
+
+.close {
+  width: 150px;
+  height: 50px;
+  border-radius: 100px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 90%;
+  font-size: 26px;
+  cursor: pointer;
+  margin: 30px 0;
+  background-color: #000000;
+  color: #EBEC67;
+}
+
+.close:hover {
+  background-color: lightblue;
+  text-decoration: none;
+}

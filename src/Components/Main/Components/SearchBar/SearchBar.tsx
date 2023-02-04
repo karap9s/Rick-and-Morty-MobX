@@ -4,8 +4,9 @@ import Pic from '../../../../assets/icons/1200px-Magnifying_glass_icon.png';
 import Gender from '../../../../ComponentsUtils/Gender/Gender';
 import Status from '../../../../ComponentsUtils/Status/Status';
 import { mainStore } from '../../../../Store/MainStore';
+import { observer } from 'mobx-react-lite';
 
-const SearchBar: React.FC = () => {
+const SearchBar: React.FC = observer(() => {
   const { setName, setType } = mainStore;
 
   const [search, setSearch] = useState(localStorage.getItem('search') || '');
@@ -62,6 +63,6 @@ const SearchBar: React.FC = () => {
       <Gender />
     </form>
   );
-};
+});
 
 export default SearchBar;

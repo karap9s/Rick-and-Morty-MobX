@@ -6,17 +6,17 @@ import ICards from '../../../../Types/MainTypes';
 import Card from '../../../../ComponentsUtils/Card/Card';
 
 const Cards: React.FC = observer(() => {
-  const { cards, gender, status, name, type } = mainStore;
-  const { setCards } = mainStore;
+  const { cardsArray, gender, status, name, type } = mainStore;
+  const { setCardsArray } = mainStore;
 
   useEffect(() => {
-    setCards();
+    setCardsArray();
   }, [gender, status, name, type]);
 
   return (
     <div className="wrapper">
       <div className="cards_wrapper">
-        {cards?.map((card: ICards) => (
+        {cardsArray?.map((card: ICards) => (
           <Card {...card} key={card.id} />
         ))}
       </div>

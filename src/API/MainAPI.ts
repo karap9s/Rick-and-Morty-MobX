@@ -1,4 +1,4 @@
-import { TGetPages } from '../Types/MainTypes';
+import { TEpisodes, TGetPages, TSeries } from '../Types/MainTypes';
 
 const BASE_URL = 'https://rickandmortyapi.com/api';
 const character = `${BASE_URL}/character`;
@@ -18,4 +18,10 @@ export const getPages = async (arg: TGetPages) => {
   );
   const data = await res.json();
   return data.info.pages;
+};
+
+export const getEpisodeData = async (arg: { result: number }): Promise<TEpisodes> => {
+  const res = await fetch(`${episode}/${arg.result}`);
+  const data = await res.json();
+  return data;
 };

@@ -1,21 +1,25 @@
 import { makeAutoObservable, runInAction } from 'mobx';
-import { getFilterCharacters, getPages } from '../API/MainAPI';
-import ICards from '../Types/MainTypes';
+import { getEpisodeData, getFilterCharacters, getPages } from '../API/MainAPI';
+import ICards, { TSeries } from '../Types/MainTypes';
 
 class MainStore {
-  cards: ICards[] = [];
+  cardsArray: ICards[] = [];
+  card: ICards = {} as ICards;
   page: number = JSON.parse(localStorage.getItem('page') || JSON.stringify(1));
   pagesCount: number = 0;
   gender: string = localStorage.getItem('gender') || '';
   status: string = localStorage.getItem('status') || '';
   type: string = 'name';
   name: string = '';
+  currentCharacter: string = '';
+  content: TSeries[] = [];
+  numberOfKey: number = 0;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setCards = (): void => {
+  setCardsArray = (): void => {
     getFilterCharacters({
       type: this.type,
       name: this.name,
@@ -24,9 +28,13 @@ class MainStore {
       page: this.page,
     }).then((data) => {
       runInAction(() => {
-        this.cards = data;
+        this.cardsArray = data;
       });
     });
+  };
+
+  setCard = (payload: ICards): void => {
+    this.card = payload;
   };
 
   setPagesCount = async (): Promise<void> => {
@@ -79,6 +87,31 @@ class MainStore {
 
   setName = (payload: string): void => {
     this.name = payload;
+  };
+
+  setCurrentCharacter = (payload: string): void => {
+    this.currentCharacter = payload;
+  };
+
+  setContent = (): void => {
+    this.content = [];
+    this.numberOfKey = 0;
+  };
+
+  setEpisodeData = async (payload: number): Promise<void> => {
+    getEpisodeData({ result: payload }).then((data) => {
+      runInAction(() => {
+        this.content = [
+          ...this.content,
+          {
+            name: data.name,
+            date: data.air_date,
+            episode: data.episode,
+            key: (++this.numberOfKey).toString(),
+          },
+        ];
+      })
+    });
   };
 }
 

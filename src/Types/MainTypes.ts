@@ -44,4 +44,21 @@ export type TCheckedStatus = {
   unknown: boolean;
 };
 
+export type TSeries = {
+  name: string;
+  date: string;
+  episode: string;
+  key: string;
+};
+
+export type TEpisodes = {
+  id: number;
+  name: string;
+  air_date: string;
+  episode: string;
+  characters: string[];
+  url: string;
+  created: string;
+};
+
 export type TPagesCount = string | number;
