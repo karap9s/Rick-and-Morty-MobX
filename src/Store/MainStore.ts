@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { getEpisodeData, getFilterCharacters, getPages } from '../API/MainAPI';
-import ICards, { TSeries } from '../Types/MainTypes';
+import ICards, { TActive, TSeries } from '../Types/MainTypes';
 
 class MainStore {
   cardsArray: ICards[] = [];
@@ -14,6 +14,7 @@ class MainStore {
   currentCharacter: string = '';
   content: TSeries[] = [];
   numberOfKey: number = 0;
+  active: TActive = localStorage.getItem('activePage') as TActive || 'home';
 
   constructor() {
     makeAutoObservable(this);
@@ -113,6 +114,11 @@ class MainStore {
       })
     });
   };
+
+  setActive = (payload: TActive): void => {
+    this.active = payload;
+    localStorage.setItem('activePage', payload)
+  }
 }
 
 export const mainStore = new MainStore();

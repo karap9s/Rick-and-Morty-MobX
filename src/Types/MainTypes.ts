@@ -62,3 +62,5 @@ export type TEpisodes = {
 };
 
 export type TPagesCount = string | number;
+
+export type TActive = 'home' | 'form' | 'about';

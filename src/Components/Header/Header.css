@@ -23,7 +23,7 @@
   color: red;
 }
 
-.active {
+.header_active {
   color: orange;
   border-bottom: 2px solid orangered;
   transition: .5s;
