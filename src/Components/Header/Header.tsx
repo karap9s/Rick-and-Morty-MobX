@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   // const { currentCharacter, active, setActive } = useContext(MainContext);
 
   return (
-    <header className="wrapper">
+    <header className="header_wrapper">
       <div className="link_wrapper">
         <Link
           // onClick={() => setActive('home')}

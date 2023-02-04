@@ -1,0 +1,14 @@
+.not_found_wrapper {
+  background: url(../../assets/img/rick-and-morty-nawpic-3.jpg);
+  background-position-x: center;
+  background-size: contain;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not_found_message {
+  font-size: 48px;
+  color: #fff;
+}

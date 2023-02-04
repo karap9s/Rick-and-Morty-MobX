@@ -23,16 +23,8 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(jpg|png|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'assets/',
-            },
-          },
-        ],
+        test: /\.(jpg|png|svg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },
@@ -49,5 +41,6 @@ module.exports = {
     compress: true,
     port: 5500,
     hot: true,
+    historyApiFallback: true,
   },
 };
