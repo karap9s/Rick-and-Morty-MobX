@@ -3,6 +3,12 @@
   flex-direction: column;
 }
 
+.form_input_wrapper_checkbox {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
 .form_label {
   font-size: 28px;
   display: block;
@@ -21,4 +27,9 @@ color: #f00;
   width: 350px;
   height: 45px;
   font-size: 18px;
+}
+
+.form_checkbox {
+  width: 20px;
+  height: 20px;
 }

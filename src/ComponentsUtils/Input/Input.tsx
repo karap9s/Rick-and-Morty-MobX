@@ -65,6 +65,7 @@ const Input: React.FC<InputProps> = observer(({ field, type }) => {
             type={type}
             id={field.name}
             onChange={field.onChange}
+            className="form_checkbox"
           />
         );
       default:
@@ -73,12 +74,18 @@ const Input: React.FC<InputProps> = observer(({ field, type }) => {
   };
 
   return (
-    <div className='form_input_wrapper'>
+    <div
+      className={
+        type === 'checkbox'
+          ? 'form_input_wrapper_checkbox'
+          : 'form_input_wrapper'
+      }
+    >
       <label htmlFor={field.name} className="form_label">
         {field.label}
       </label>
       {renderInput()}
-      {field.error && <span className='form_error'>{field.error}</span>}
+      {field.error && <span className="form_error">{field.error}</span>}
     </div>
   );
 });
