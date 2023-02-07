@@ -7,6 +7,7 @@ import About from './Components/About/About';
 import NotFound from './ComponentsUtils/NotFound/NotFound';
 import Form from './Components/Form/Form';
 import Information from './Components/Information/Information';
+import FormUtils from './Components/Form/FormUtils';
 
 const App: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
-        <Route path="/form" element={<Form />} />
+        <Route path="/form" element={<Form form={FormUtils} />} />
         <Route path="/info" element={<Information />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace={true} />} />

@@ -5,6 +5,7 @@ import ICards, { TActive, TSeries } from '../Types/MainTypes';
 class MainStore {
   cardsArray: ICards[] = [];
   card: ICards = {} as ICards;
+  isCardsLoading: boolean = false;
   page: number = JSON.parse(localStorage.getItem('page') || JSON.stringify(1));
   pagesCount: number = 0;
   gender: string = localStorage.getItem('gender') || '';
@@ -14,7 +15,7 @@ class MainStore {
   currentCharacter: string = '';
   content: TSeries[] = [];
   numberOfKey: number = 0;
-  active: TActive = localStorage.getItem('activePage') as TActive || 'home';
+  active: TActive = (localStorage.getItem('activePage') as TActive) || 'home';
 
   constructor() {
     makeAutoObservable(this);
@@ -111,13 +112,17 @@ class MainStore {
             key: (++this.numberOfKey).toString(),
           },
         ];
-      })
+      });
     });
   };
 
   setActive = (payload: TActive): void => {
     this.active = payload;
-    localStorage.setItem('activePage', payload)
+    localStorage.setItem('activePage', payload);
+  };
+
+  switchCardsLoading = (): void => {
+    this.isCardsLoading = !this.isCardsLoading;
   }
 }
 

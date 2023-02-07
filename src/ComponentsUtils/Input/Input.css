@@ -1,0 +1,24 @@
+.form_input_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_label {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 2px;
+  margin-top: 3px;
+  color: #000;
+}
+
+.form_error {
+font-size: 18px;
+font-style: italic;
+color: #f00;
+}
+
+.form_input {
+  width: 350px;
+  height: 45px;
+  font-size: 18px;
+}
