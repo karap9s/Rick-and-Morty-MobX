@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { mainStore } from '../../Store/MainStore';
-import { TCheckedStatus } from '../../Types/MainTypes';
+import { IStatus, TCheckedStatus, TStatusKeys } from '../../Types/MainTypes';
 import './Status.css';
 
 const Status: React.FC = () => {
   const { setStatus } = mainStore;
+
+  const statusMap: IStatus = {
+    any: '',
+    alive: 'alive',
+    dead: 'dead',
+    unknown: 'unknown',
+  };
 
   const [checkedStatus, setCheckedStatus] = useState<TCheckedStatus>(
     JSON.parse(
@@ -19,9 +26,10 @@ const Status: React.FC = () => {
   );
 
   const handleRadioStatus = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const status: TStatusKeys = e.target.value.toLowerCase() as TStatusKeys;
     switch (e.target.value.toLowerCase()) {
       case 'any':
-        setStatus('');
+        setStatus(statusMap[status]);
         setCheckedStatus({
           any: true,
           alive: false,
@@ -30,7 +38,7 @@ const Status: React.FC = () => {
         });
         break;
       case 'alive':
-        setStatus(e.target.value.toLowerCase());
+        setStatus(statusMap[status]);
         setCheckedStatus({
           any: false,
           alive: true,
@@ -39,7 +47,7 @@ const Status: React.FC = () => {
         });
         break;
       case 'dead':
-        setStatus(e.target.value.toLowerCase());
+        setStatus(statusMap[status]);
         setCheckedStatus({
           any: false,
           alive: false,
@@ -48,7 +56,7 @@ const Status: React.FC = () => {
         });
         break;
       case 'unknown':
-        setStatus(e.target.value.toLowerCase());
+        setStatus(statusMap[status]);
         setCheckedStatus({
           any: false,
           alive: false,

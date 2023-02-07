@@ -18,7 +18,7 @@ const Pagination: React.FC = observer(() => {
   useEffect(() => {
     setPagesCount().then(() => {
       setCardsArray();
-      const getPagination = () => {
+      const getPagination = (): TPagesCount[] => {
         switch (pagesCount) {
           case 0:
             return [];
@@ -60,10 +60,10 @@ const Pagination: React.FC = observer(() => {
         <button onClick={() => decrementPage()} className="page control">
           Previous
         </button>
-        {buttons.map((el: string | number) => (
+        {buttons.map((el: string | number, index: number) => (
           <button
-            disabled={el === '..' || el === '...' || el === '....'}
-            key={el}
+            disabled={typeof el === 'string'}
+            key={index}
             onClick={() => customPage(el as number)}
             className="page"
           >

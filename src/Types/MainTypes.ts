@@ -19,7 +19,7 @@ export default interface ICards {
   creater: string;
   isOpen?: boolean;
   modalHandler?: (value: boolean) => void;
-};
+}
 
 export type TGetPages = {
   type: string;
@@ -64,3 +64,31 @@ export type TEpisodes = {
 export type TPagesCount = string | number;
 
 export type TActive = 'home' | 'form' | 'about';
+
+export type TGenderKeys =
+  | 'any'
+  | 'male'
+  | 'female'
+  | 'genderless'
+  | 'unknown_second';
+
+export type TGenderValues = '' | 'male' | 'female' | 'genderless' | 'unknown';
+
+export interface IGender {
+  any: TGenderValues;
+  male: TGenderValues;
+  female: TGenderValues;
+  genderless: TGenderValues;
+  unknown_second: TGenderValues;
+}
+
+export type TStatusKeys = 'any' | 'alive' | 'dead' | 'unknown';
+
+export type TStatusValues = '' | 'alive' | 'dead' | 'unknown';
+
+export interface IStatus {
+  any: TStatusValues;
+  alive: TStatusValues;
+  dead: TStatusValues;
+  unknown: TStatusValues;
+}

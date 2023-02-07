@@ -10,7 +10,7 @@ const Information: React.FC = observer(() => {
   const { setContent, setEpisodeData, setCurrentCharacter } = mainStore;
 
   useEffect(() => {
-    const series = async (episodes: string[]): Promise<void> => {
+    const fetchEpisodes = async (episodes: string[]): Promise<void> => {
       setContent();
       for (let i = 0; i < episodes.length; i++) {
         const item = episodes[i];
@@ -20,8 +20,8 @@ const Information: React.FC = observer(() => {
       }
     };
 
-    series(card.episode);
-  }, [card.episode, card]);
+    fetchEpisodes(card.episode);
+  }, [card.episode]);
 
   return (
     <>

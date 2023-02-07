@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { getEpisodeData, getFilterCharacters, getPages } from '../API/MainAPI';
-import ICards, { TActive, TSeries } from '../Types/MainTypes';
+import ICards, { TActive, TGenderValues, TSeries, TStatusValues } from '../Types/MainTypes';
 
 class MainStore {
   cardsArray: ICards[] = [];
@@ -8,7 +8,8 @@ class MainStore {
   isCardsLoading: boolean = false;
   page: number = JSON.parse(localStorage.getItem('page') || JSON.stringify(1));
   pagesCount: number = 0;
-  gender: string = localStorage.getItem('gender') || '';
+  gender: TGenderValues =
+    (localStorage.getItem('gender') as TGenderValues) || '';
   status: string = localStorage.getItem('status') || '';
   type: string = 'name';
   name: string = '';
@@ -73,12 +74,12 @@ class MainStore {
     localStorage.setItem('page', JSON.stringify(this.page));
   };
 
-  setGender = (payload: string): void => {
+  setGender = (payload: TGenderValues): void => {
     this.gender = payload;
     localStorage.setItem('gender', payload);
   };
 
-  setStatus = (payload: string): void => {
+  setStatus = (payload: TStatusValues): void => {
     this.status = payload;
     localStorage.setItem('status', payload);
   };
@@ -123,7 +124,7 @@ class MainStore {
 
   switchCardsLoading = (): void => {
     this.isCardsLoading = !this.isCardsLoading;
-  }
+  };
 }
 
 export const mainStore = new MainStore();

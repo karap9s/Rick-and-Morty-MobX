@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { mainStore } from '../../Store/MainStore';
-import { TCheckedGender } from '../../Types/MainTypes';
+import { IGender, TCheckedGender, TGenderKeys } from '../../Types/MainTypes';
 import './Gender.css';
 
 const Gender: React.FC = () => {
   const { setGender } = mainStore;
+
+  const genderMap: IGender = {
+    any: '',
+    male: 'male',
+    female: 'female',
+    genderless: 'genderless',
+    unknown_second: 'unknown',
+  };
 
   const [checkedGender, setCheckedGender] = useState<TCheckedGender>(
     JSON.parse(
@@ -20,9 +28,10 @@ const Gender: React.FC = () => {
   );
 
   const handleRadioGender = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const gender: TGenderKeys = e.target.value.toLowerCase() as TGenderKeys;
     switch (e.target.value.toLowerCase()) {
       case 'any':
-        setGender('');
+        setGender(genderMap[gender]);
         setCheckedGender({
           any: true,
           male: false,
@@ -32,7 +41,7 @@ const Gender: React.FC = () => {
         });
         break;
       case 'male':
-        setGender(e.target.value.toLowerCase());
+        setGender(genderMap[gender]);
         setCheckedGender({
           any: false,
           male: true,
@@ -42,7 +51,7 @@ const Gender: React.FC = () => {
         });
         break;
       case 'female':
-        setGender(e.target.value.toLowerCase());
+        setGender(genderMap[gender]);
         setCheckedGender({
           any: false,
           male: false,
@@ -52,7 +61,7 @@ const Gender: React.FC = () => {
         });
         break;
       case 'genderless':
-        setGender(e.target.value.toLowerCase());
+        setGender(genderMap[gender]);
         setCheckedGender({
           any: false,
           male: false,
@@ -62,7 +71,7 @@ const Gender: React.FC = () => {
         });
         break;
       case 'unknown_second':
-        setGender('unknown');
+        setGender(genderMap[gender]);
         setCheckedGender({
           any: false,
           male: false,
