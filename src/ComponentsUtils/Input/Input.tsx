@@ -29,11 +29,13 @@ const Input: React.FC<InputProps> = observer(({ field, type }) => {
             aria-describedby="name-desc"
             {...field.bind({ type })}
           >
-            {field.options?.map((option: any) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
+            {field.options?.map(
+              (option: { value: string | number; label: string }) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              )
+            )}
           </select>
         );
       case 'date':
@@ -73,21 +75,30 @@ const Input: React.FC<InputProps> = observer(({ field, type }) => {
     }
   };
 
-  return (
-    <div
-      className={
-        type === 'checkbox'
-          ? 'form_input_wrapper_checkbox'
-          : 'form_input_wrapper'
-      }
-    >
+  const Fields = (
+    <>
       <label htmlFor={field.name} className="form_label">
         {field.label}
       </label>
       {renderInput()}
-      {field.error && <span className="form_error">{field.error}</span>}
-    </div>
+    </>
   );
+
+  const drawInput = () => {
+    return type === 'checkbox' ? (
+      <div className="form_input_wrapper_checkbox">
+        <div className="fields">{Fields}</div>
+        {field.error && <span className="form_error">{field.error}</span>}
+      </div>
+    ) : (
+      <div className="form_input_wrapper">
+        {Fields}
+        {field.error && <span className="form_error">{field.error}</span>}
+      </div>
+    );
+  };
+
+  return drawInput();
 });
 
 export default Input;

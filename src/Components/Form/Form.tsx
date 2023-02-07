@@ -5,6 +5,7 @@ import Input from '../../ComponentsUtils/Input/Input';
 import FormCards from './FormCards';
 import { formStore } from '../../Store/FormStore';
 
+
 const Form: React.FC<any> = observer(({ form }) => {
   const { storage } = formStore;
   const { resetStorage } = formStore;

@@ -3,10 +3,15 @@
   flex-direction: column;
 }
 
-.form_input_wrapper_checkbox {
+.fields {
   display: flex;
   gap: 50px;
   align-items: center;
+}
+
+.form_input_wrapper_checkbox {
+  display: flex;
+  flex-direction: column;
 }
 
 .form_label {
@@ -18,9 +23,9 @@
 }
 
 .form_error {
-font-size: 18px;
-font-style: italic;
-color: #f00;
+  font-size: 18px;
+  font-style: italic;
+  color: #f00;
 }
 
 .form_input {

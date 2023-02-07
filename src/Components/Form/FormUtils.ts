@@ -1,5 +1,6 @@
 import MyForm from 'mobx-react-form';
 import dvr from 'mobx-react-form/lib/validators/DVR';
+import { ChangeEvent } from 'react';
 import validatorjs from 'validatorjs';
 import { formStore } from '../../Store/FormStore';
 import { countryList } from './Countries';
@@ -7,21 +8,25 @@ import { countryList } from './Countries';
 const plugins = { dvr: dvr(validatorjs) };
 
 const handlers = {
-  onChange: (field: any) => (e: any): void => {
-    if (field.type === 'checkbox') {
-      if (e.target.checked) {
-        field.set(e.target.value);
+  onChange:
+    (field: any) =>
+    (e: ChangeEvent<HTMLInputElement>): void => {
+      if (field.type === 'checkbox') {
+        if (e.target.checked) {
+          field.set(e.target.value);
+        } else {
+          field.set(null);
+        }
       } else {
-        field.set(null);
+        field.set(e.target.value);
       }
-    } else {
+    },
+  onDrop:
+    (field: any) =>
+    (e: ChangeEvent<HTMLInputElement>): void => {
+      field.validate({ showErrors: true });
       field.set(e.target.value);
-    }
-  },
-  onDrop: (field: any) => (e: any): void => {
-    field.validate({ showErrors: true });
-    field.set(e.target.value);
-  },
+    },
 };
 
 const fields = [
